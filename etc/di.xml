@@ -19,9 +19,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="MageStack\GoogleLogin\Api\ConfigInterface" type="MageStack\GoogleLogin\Model\Config" />
     <type name="MageStack\GoogleLogin\Model\Provider\GoogleAuth">
         <arguments>
+            <argument name="config" xsi:type="object">MageStack\GoogleLogin\Model\Config\Proxy</argument>
             <argument name="authorizationUrl" xsi:type="string">https://accounts.google.com/o/oauth2/v2/auth</argument>
             <argument name="userInfoUrl" xsi:type="string">https://www.googleapis.com/oauth2/v1/userinfo?alt=json</argument>
             <argument name="tokenUrl" xsi:type="string">https://oauth2.googleapis.com/token</argument>

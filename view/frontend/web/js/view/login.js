@@ -26,14 +26,13 @@ define([
     return Component.extend({
         isCustomerLoginRequired: checkoutConfig.isCustomerLoginRequired,
         redirectUrl: checkoutConfig.googleAuth.redirectUrl,
+        isEnabled: checkoutConfig.googleAuth.isEnabled,
         defaults: {
             template: 'MageStack_GoogleLogin/google-login'
         },
 
         isActive: function () {
-            console.log(checkoutConfig);
-
-            return !customer.isLoggedIn();
+            return !customer.isLoggedIn() && this.isEnabled;
         },
     });
 });

@@ -30,7 +30,9 @@ MageStack_GoogleLogin is a Magento 2 module designed to streamline the OAuth 2 u
    -  ``php bin/magento cache:flush``
 
 ## Usage
-This module provides the OAuth 2 authentication using google.
+- Visit https://console.cloud.google.com/ and create client key and client secret 
+- Set client key and secret in magento 2 admin
+- Verify login in frontend
 
 ## Contributing
 If you would like to contribute to this module, feel free to fork the repository and create a pull request. Please make sure to follow the coding standards of Magento 2.

@@ -23,6 +23,7 @@ namespace MageStack\GoogleLogin\Model\Checkout;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use MageStack\SocialLogin\Api\OAuthProviderInterface;
+use MageStack\SocialLogin\Api\ConfigInterface;
 
 /**
  * Expose google social auth information to checkout config
@@ -38,7 +39,8 @@ class GoogleConfigProvider implements ConfigProviderInterface
      * @param OAuthProviderInterface $oAuthProvider
      */
     public function __construct(
-        private readonly OAuthProviderInterface $oAuthProvider
+        private readonly OAuthProviderInterface $oAuthProvider,
+        private readonly ConfigInterface $config
     ) {
     }
 
@@ -51,6 +53,7 @@ class GoogleConfigProvider implements ConfigProviderInterface
     {
         return [
             'googleAuth' => [
+                'isEnabled' => $this->config->isEnabled(),
                 'redirectUrl' => $this->oAuthProvider->getCheckoutLoginRedirectUrl(),
             ]
         ];

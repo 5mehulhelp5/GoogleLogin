@@ -24,7 +24,8 @@ use MageStack\GoogleLogin\Block\Link;
  * @var Link $block
  */
 ?>
-
-<a href="<?= $escaper->escapeHtmlAttr($block->getRegisterLink()) ?>" class="action register primary google">
-    <?= $escaper->escapeHtml(__('Register with google')->render()) ?>
-</a>
+<?php if ($block->isEnabled()): ?>
+    <a href="<?= $escaper->escapeHtmlAttr($block->getRegisterLink()) ?>" class="action register primary google">
+        <?= $escaper->escapeHtml(__('Register with google')->render()) ?>
+    </a>
+<?php endif; ?>

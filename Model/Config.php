@@ -21,7 +21,7 @@ declare(strict_types=1);
 
 namespace MageStack\GoogleLogin\Model;
 
-use MageStack\GoogleLogin\Api\ConfigInterface;
+use MageStack\SocialLogin\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Store\Model\ScopeInterface;

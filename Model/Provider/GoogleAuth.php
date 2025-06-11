@@ -22,12 +22,12 @@ declare(strict_types=1);
 namespace MageStack\GoogleLogin\Model\Provider;
 
 use InvalidArgumentException;
+use MageStack\SocialLogin\Api\SocialAuthStateManagerInterface;
 use MageStack\SocialLogin\Api\OAuthProviderInterface;
+use MageStack\SocialLogin\Api\ConfigInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\HTTP\Client\Curl;
 use Magento\Framework\UrlInterface;
-use MageStack\SocialLogin\Api\SocialAuthStateManagerInterface;
-use MageStack\GoogleLogin\Api\ConfigInterface;
-use Magento\Framework\Serialize\SerializerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 

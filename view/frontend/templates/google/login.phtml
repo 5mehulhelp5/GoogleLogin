@@ -26,6 +26,8 @@ use MageStack\GoogleLogin\Block\Link;
  */
 ?>
 
-<a href="<?= $escaper->escapeHtmlAttr($block->getLoginLink()) ?>" class="action login primary google">
-    <?= $escaper->escapeHtml(__('Login with google')->render()) ?>
-</a>
+<?php if ($block->isEnabled()): ?>
+    <a href="<?= $escaper->escapeHtmlAttr($block->getLoginLink()) ?>" class="action login primary google">
+        <?= $escaper->escapeHtml(__('Login with google')->render()) ?>
+    </a>
+<?php endif; ?>

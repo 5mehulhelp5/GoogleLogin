@@ -35,12 +35,14 @@
     <virtualType name="MageStack\GoogleLogin\Block\Link" type="MageStack\SocialLogin\Block\Link">
         <arguments>
             <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth</argument>
+            <argument name="config" xsi:type="object">MageStack\GoogleLogin\Model\Config\Proxy</argument>
         </arguments>
     </virtualType>
 
     <type name="MageStack\GoogleLogin\Model\Checkout\GoogleConfigProvider">
         <arguments>
             <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth\Proxy</argument>
+            <argument name="config" xsi:type="object">MageStack\GoogleLogin\Model\Config\Proxy</argument>
         </arguments>
     </type>
 

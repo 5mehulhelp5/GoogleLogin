@@ -1,58 +1,45 @@
-# Mage2 Module MageStack Google Login
+# Mage2 Module: Mage Stack Google Login
+MageStack_GoogleLogin is a Magento 2 module designed to streamline the OAuth 2 using google.
 
-    ``mage-stack/module-advance-filters``
+## Requirements
+- Magento 2.4.8
+- PHP 8.4
+- MageStack Core module
+    ``composer require mage-stack/module-core``
+- MageStack Social login module
+    ``composer require mage-stack/module-social-login``
 
- - [Main Functionalities](#markdown-header-main-functionalities)
- - [Installation](#markdown-header-installation)
- - [Configuration](#markdown-header-configuration)
- - [Specifications](#markdown-header-specifications)
- - [Attributes](#markdown-header-attributes)
-
+## Module version
+- 1.0.0
 
 ## Main Functionalities
-Logstash wrapper
+- Provide social login using Google OAuth 2
 
 ## Installation
-\* = in production please use the `--keep-generated` option
+1. **Install the module via Composer**:
+    To install this module, run the following command in your Magento root directory:
+    - ``composer require mage-stack/module-social-login``
+2. **Enable the module:**
+    After installation, enable the module by running:
+   - ``php bin/magento module:enable MageStack_SocialLogin``
+3. **Apply database updates:**
+    Run the setup upgrade command to apply any database changes:
+    - ``php bin/magento setup:upgrade``
+4. **Flush the Magento cache:**
+    Finally, flush the cache:
+   -  ``php bin/magento cache:flush``
 
-### Type 1: Zip file
+## Usage
+This module provides the OAuth 2 authentication using google.
 
- - Unzip the zip file in `app/code/MageStack`
- - Enable the module by running `php bin/magento module:enable MageStack_SwooleWebSocket`
- - Apply database updates by running `php bin/magento setup:upgrade`\*
- - Flush the cache by running `php bin/magento cache:flush`
+## Contributing
+If you would like to contribute to this module, feel free to fork the repository and create a pull request. Please make sure to follow the coding standards of Magento 2.
 
-### Type 2: Composer
+## Reporting Issues
+If you encounter any issues or need support, please create an issue on the GitHub Issues page. We will review and address your concerns as soon as possible.
 
- - Make the module available in a composer repository for example:
-    - private repository `repo.magento.com`
-    - public repository `packagist.org`
-    - public github repository as vcs
- - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require magestack/module-swoolewebsocket`
- - enable the module by running `php bin/magento module:enable MageStack_SwooleWebSocket`
- - apply database updates by running `php bin/magento setup:upgrade`\*
- - Flush the cache by running `php bin/magento cache:flush`
+## License
+This module is licensed under the MIT License.
 
-
-## Configuration
-
-<!-- window.webSocketClient.join('private_channel');
-
-window.webSocketClient.listen('private_channel', function (data) {
-  console.log('Order was shipped', data);
-});
-
-window.webSocketClient.sendMessage({'message' : 'Hello World!'}, 'private_channel'); -->
-
-
-## Specifications
-
- - Console Command
-	- Satatus
-
-
-## Attributes
-
-
-
+## Support
+If you find this module useful, consider supporting me By giving this module a star on github

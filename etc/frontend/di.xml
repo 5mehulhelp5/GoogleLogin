@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 MageStack. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * DISCLAIMER
+ *
+ * Do not make any kind of changes to this file if you
+ * wish to upgrade this extension to newer version in the future.
+ *
+ * @category  MageStack
+ * @package   MageStack_GoogleLogin
+ * @author    Amit Biswas <amit.biswas.webdeveloper@gmail.com>
+ * @copyright 2025 MageStack
+ * @license   https://opensource.org/licenses/MIT  MIT License
+ * @link      https://github.com/attherateof/GoogleLogin
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="MageStack\GoogleLogin\Controller\Auth\Callback">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+            <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="MageStack\GoogleLogin\Controller\Auth\Redirect">
+        <arguments>
+            <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth\Proxy</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="MageStack\GoogleLogin\Block\Link" type="MageStack\SocialLogin\Block\Link">
+        <arguments>
+            <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="MageStack\GoogleLogin\Model\Checkout\GoogleConfigProvider">
+        <arguments>
+            <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="google_auth_config_provider" xsi:type="object">MageStack\GoogleLogin\Model\Checkout\GoogleConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

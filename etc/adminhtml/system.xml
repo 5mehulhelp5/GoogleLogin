@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 MageStack. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * DISCLAIMER
+ *
+ * Do not make any kind of changes to this file if you
+ * wish to upgrade this extension to newer version in the future.
+ *
+ * @category  MageStack
+ * @package   MageStack_GoogleLogin
+ * @author    Amit Biswas <amit.biswas.webdeveloper@gmail.com>
+ * @copyright 2025 MageStack
+ * @license   https://opensource.org/licenses/MIT  MIT License
+ * @link      https://github.com/attherateof/GoogleLogin
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="social_login">
+            <group 
+            id="google" 
+            translate="label" 
+            type="text" 
+            sortOrder="20" 
+            showInDefault="1" 
+            showInWebsite="1" 
+            showInStore="0">
+                <label>Google</label>
+                <field 
+                    id="is_enabled" 
+                    translate="label" 
+                    type="select" 
+                    showInDefault="1"  
+                    showInWebsite="1" 
+                    showInStore="0"
+                    canRestore="1" 
+                    sortOrder="10">
+                    <label>Is enabled?</label>
+                    <comment>Enable or disabled social login completly</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field 
+                    id="app_key" 
+                    translate="label" 
+                    type="obscure" 
+                    showInDefault="1"  
+                    showInWebsite="0" 
+                    showInStore="0"
+                    canRestore="1" 
+                    sortOrder="20">
+                    <label>APP Key</label>
+                    <comment>Client ID will be encrypted and stored securely.</comment>
+                    <depends>
+                        <field id="is_enabled">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field 
+                    id="app_secret" 
+                    translate="label" 
+                    type="obscure" 
+                    showInDefault="1"  
+                    showInWebsite="0" 
+                    showInStore="0"
+                    canRestore="1" 
+                    sortOrder="30">
+                    <label>APP Secret</label>
+                    <comment>Client secret will be encrypted and stored securely.</comment>
+                    <depends>
+                        <field id="is_enabled">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

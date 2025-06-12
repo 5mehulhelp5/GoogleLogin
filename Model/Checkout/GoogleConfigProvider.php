@@ -37,6 +37,7 @@ class GoogleConfigProvider implements ConfigProviderInterface
      * Constructor
      *
      * @param OAuthProviderInterface $oAuthProvider
+     * @param ConfigInterface $config
      */
     public function __construct(
         private readonly OAuthProviderInterface $oAuthProvider,

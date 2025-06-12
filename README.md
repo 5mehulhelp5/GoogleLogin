@@ -18,10 +18,10 @@ MageStack_GoogleLogin is a Magento 2 module designed to streamline the OAuth 2 u
 ## Installation
 1. **Install the module via Composer**:
     To install this module, run the following command in your Magento root directory:
-    - ``composer require mage-stack/module-social-login``
+    - ``composer require mage-stack/module-google-login``
 2. **Enable the module:**
     After installation, enable the module by running:
-   - ``php bin/magento module:enable MageStack_SocialLogin``
+   - ``php bin/magento module:enable MageStack_GoogleLogin``
 3. **Apply database updates:**
     Run the setup upgrade command to apply any database changes:
     - ``php bin/magento setup:upgrade``

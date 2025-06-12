@@ -22,6 +22,7 @@ declare(strict_types=1);
 namespace MageStack\GoogleLogin\Model\Provider;
 
 use InvalidArgumentException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use MageStack\SocialLogin\Api\SocialAuthStateManagerInterface;
 use MageStack\SocialLogin\Api\OAuthProviderInterface;
 use MageStack\SocialLogin\Api\ConfigInterface;
@@ -171,7 +172,7 @@ class GoogleAuth implements OAuthProviderInterface
     /**
      * @inheritDoc
      */
-    public function getAccessToken(string $code): ?string
+    public function getAccessToken(string $code): string
     {
         $postFields = [
             'code' => $code,
@@ -182,7 +183,8 @@ class GoogleAuth implements OAuthProviderInterface
         ];
 
         $this->curl->post($this->tokenUrl, $postFields);
-        $response = $this->parseBody($this->curl->getBody());
+        $rawBody = $this->curl->getBody();
+        $response = $this->parseBody($rawBody);
         $mapped = $this->mapBody(
             $response,
             [
@@ -190,7 +192,19 @@ class GoogleAuth implements OAuthProviderInterface
             ]
         );
 
-        return $mapped['token'] ? (string) $mapped['token'] : null;
+        if (isset($mapped['token'])) {
+            $this->logger->error(
+                '[MageStack][Google][Auth] Access token not present',
+                [
+                    'raw_body' => $rawBody,
+                    'code' => $code,
+                ]
+            );
+
+            throw new NoSuchEntityException("Access token must be present");
+        }
+
+        return (string) $mapped['token'];
     }
 
     /**

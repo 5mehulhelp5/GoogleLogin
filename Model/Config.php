@@ -97,4 +97,16 @@ class Config implements ConfigInterface
 
         return $this->encryptor->decrypt($clientSecret);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getFrontendLabel(?int $storeId = null): string
+    {
+        return $this->scopeConfig->getValue(
+            self::GOOGLE_AUTH_API_KEY_CONFIG_XML_PATH,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        );
+    }
 }

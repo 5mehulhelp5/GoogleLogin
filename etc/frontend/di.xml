@@ -32,13 +32,6 @@
         </arguments>
     </type>
 
-    <virtualType name="MageStack\GoogleLogin\Block\Link" type="MageStack\SocialLogin\Block\Link">
-        <arguments>
-            <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth</argument>
-            <argument name="config" xsi:type="object">MageStack\GoogleLogin\Model\Config\Proxy</argument>
-        </arguments>
-    </virtualType>
-
     <type name="MageStack\GoogleLogin\Model\Checkout\GoogleConfigProvider">
         <arguments>
             <argument name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth\Proxy</argument>
@@ -46,10 +39,13 @@
         </arguments>
     </type>
 
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="MageStack\SocialLogin\Model\CompositeSocialLinkBuilder">
         <arguments>
-            <argument name="configProviders" xsi:type="array">
-                <item name="google_auth_config_provider" xsi:type="object">MageStack\GoogleLogin\Model\Checkout\GoogleConfigProvider</item>
+            <argument name="socialProviders" xsi:type="array">
+                <item name="google" xsi:type="array">
+                    <item name="oAuthProvider" xsi:type="object">MageStack\GoogleLogin\Model\Provider\GoogleAuth</item>
+                    <item name="config" xsi:type="object">MageStack\GoogleLogin\Model\Config</item>
+                </item>
             </argument>
         </arguments>
     </type>
